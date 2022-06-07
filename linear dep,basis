@@ -1,0 +1,20 @@
+import numpy as np
+import sympy as sp
+def is_independent(S):
+    variables=sp.symbols(f'a:{len(S)}')
+    M=None
+    for i,var in enumerate(variables):
+        if M is None:
+            M=var*S[i]
+        else:
+            M=M+var*S[i]
+    sol=sp.solve(M,variables,manual=True)
+    if np.abs(sol[0]).sum()==0:
+        print("yes, the given set is linerly dependent")
+        return True
+    else:
+        print("no!the given set is linearly dependent")
+        print("and the scalars are",soln)
+        return False
+S=np.array([[1,0,0,-1],[0,1,0,-1],[0,0,1,-1],[0,0,0,1]])
+is_independent(S)
