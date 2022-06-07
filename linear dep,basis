@@ -18,3 +18,17 @@ def is_independent(S):
         return False
 S=np.array([[1,0,0,-1],[0,1,0,-1],[0,0,1,-1],[0,0,0,1]])
 is_independent(S)
+
+#part_2
+def is_basis(B,dim):
+    if is_independent(B):
+        if len(B)==int(dim):
+            print("and dimension of v= ",dim,"=no of elements of B")
+            print("so,the given set is a basis")
+            return
+        else:
+            print("but,the no of elements in the set",B,"is not equal to the dim, So ",B,"is not a  basis")
+import numpy as np
+B=np.array([[1,0,0,-1],[0,1,0,-1],[0,0,1,-1],[0,0,0,1]])
+dim=4
+is_basis(B,dim)
