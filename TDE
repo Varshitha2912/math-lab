@@ -1,0 +1,14 @@
+5 one
+
+from sympy import *
+x,y,z,=symbols('x,y,z')
+
+p=y+z
+q=x+z
+r=y+x
+
+f=simplify(p*(diff(q,z)-diff(r,y))+q*(diff(r,x)-diff(p,z))+r*(diff(p,y)-diff(q,x)))
+if f==0:
+    print("It is integrable")
+else:
+    print("Nope")
