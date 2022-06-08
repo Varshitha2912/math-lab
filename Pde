@@ -1,0 +1,54 @@
+6, 1st
+
+from sympy import *
+from numpy import *
+x,y,z,a,b,c=symbols('x,y,z,a,b,c')
+f=Function('f')
+u=f(x,y)
+p=u.diff(x)
+q=u.diff(y)
+eq=p*p+q*q+1
+e=eq.subs(p,a).subs(q,b)
+bval=solve(e,b)
+z=a*x+b*y+c
+ans=z.subs(b,bval[1])
+print(ans)
+
+6, 2nd
+
+from sympy import *
+x,y,a,b,p,q,u=symbols('x,y,a,b,p,q,u')
+z=Function('z')(u)
+eq=p*(1-q*q)-q*(1-z)
+e=eq.subs(p,diff(z,u)).subs(q,a*diff(z,u))
+dz=solve(e,diff(z,u))
+print("All values oif dz/du:")
+pprint(dz[0])
+pprint(dz[1])
+pprint(dz[2])
+s=dsolve(dz[2]-diff(z,u))
+print("Solution:",s)
+ans=s.subs(u,x+a*y)
+print(ans)
+
+6, 3rd
+
+from sympy import *
+x,y,a,b,p,q=symbols('x,y,a,b,p,q')
+lhs=p+x
+rhs=q+y
+h1=Eq(lhs,a)
+h2=Eq(rhs,a)
+r1=solve(h1,p)
+r2=solve(h2,q)
+print('p=',r1,'q=',r2)
+z=integrate(r1[0],x)+integrate(r2[0],y)
+print(z)
+
+6, 4th
+
+from sympy import *
+x,y,a,b,p,q=symbols('x,y,a,b,p,q')
+z=p*x+q*y+p*p+q*q
+ans=z.subs(p,a).subs(q,b)
+print(ans)
